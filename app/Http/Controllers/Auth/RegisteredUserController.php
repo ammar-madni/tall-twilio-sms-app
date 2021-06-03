@@ -37,7 +37,7 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             //official regex from Twilio, switch to use lookup api later.
-            'twilio_phone' => ['required', 'regex:/^\+[1-9]\d{1,14}$/'],
+            'twilio_phone' => ['required', 'unique:users', 'regex:/^\+[1-9]\d{1,14}$/'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 

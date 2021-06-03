@@ -10,7 +10,7 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.40",
-        "laravel/tinker": "^2.5",
+        "laravel/horizon": "^5.7",
         "livewire/livewire": "^2.4",
         "twilio/sdk": "^6.24"
     },

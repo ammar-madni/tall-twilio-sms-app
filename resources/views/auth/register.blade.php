@@ -28,7 +28,7 @@
 
             <!-- Twilio Phone Number -->
             <div class="mt-4">
-                <x-label for="twilio_phone" :value="__('Twilio Phone')" />
+                <x-label for="twilio_phone" :value="__('Twilio Phone Number')" />
 
                 <x-input id="twilio_phone" class="block mt-1 w-full" type="tel" name="twilio_phone" :value="old('twilio_phone')" required />
             </div>
