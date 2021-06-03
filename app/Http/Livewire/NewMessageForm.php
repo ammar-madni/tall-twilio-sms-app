@@ -45,6 +45,13 @@ class NewMessageForm extends Component
             [
                 'from' => $message->user->twilio_phone, 
                 'body' => $message->body,
+                /*
+                    Twilio throws an exception if the route provided is not a valid url
+                    so I have tested my api endpoint locally using Postman with the same
+                    payload provided here:
+                    https://www.twilio.com/docs/usage/webhooks/sms-webhooks
+                */
+                // 'statusCallback' => route('sms-status-callback', ['id' => $message->id]),
             ]
         );
         
