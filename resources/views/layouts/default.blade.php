@@ -20,14 +20,15 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
+            @auth
+                <div class="flex container mx-auto justify-end py-2">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a onclick="event.preventDefault();this.closest('form').submit();" class="cursor-pointer inline-flex text-gray-900 hover:underline border-0 text-lg">Log Out</a>
+                    </form>
                 </div>
-            </header>
+            @endauth
 
             <!-- Page Content -->
             <main>
