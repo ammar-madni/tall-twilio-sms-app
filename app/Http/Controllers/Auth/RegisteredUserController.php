@@ -36,12 +36,15 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            //official regex from Twilio, switch to use lookup api later.
+            'twilio_phone' => ['required', 'regex:/^\+[1-9]\d{1,14}$/'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'twilio_phone' => $request->twilio_phone,
             'password' => Hash::make($request->password),
         ]);
 

@@ -134,9 +134,7 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
-        ],
+        'phone.regex' => ':attribute must be in the format +447123456789'
     ],
 
     /*
@@ -150,6 +148,8 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'phone' => 'Phone Number'
+    ],
 
 ];

@@ -10,7 +10,7 @@
     <div class="my-7">
         <form wire:submit.prevent="submit">
             <div class="mb-6">
-                <label for="phone" class="block text-sm mb-2 text-gray-600">Phone Number</label>
+                <label for="phone" class="block text-sm mb-2 text-gray-600">Phone Number (Use a verified caller ID if using Twilio free trial).</label>
                 <input wire:model.lazy="phone" type="tel" name="phone" placeholder="Format: +447123456789" class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-emerald-100 focus:border-emerald-300" required/>
                 @error('phone')
                     <div class="w-full text-red-600">{{ $message }}</div>

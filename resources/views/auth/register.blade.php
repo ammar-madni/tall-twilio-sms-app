@@ -26,6 +26,13 @@
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
+            <!-- Twilio Phone Number -->
+            <div class="mt-4">
+                <x-label for="twilio_phone" :value="__('Twilio Phone')" />
+
+                <x-input id="twilio_phone" class="block mt-1 w-full" type="tel" name="twilio_phone" :value="old('twilio_phone')" required />
+            </div>
+            
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />
