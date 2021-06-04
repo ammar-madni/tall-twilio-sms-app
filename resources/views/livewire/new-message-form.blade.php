@@ -2,11 +2,6 @@
     <div>
         <h1 class="my-3 text-3xl font-bold text-gray-700">New SMS Message</h1>
     </div>
-    @if ($success)
-        <div class="p-3 text-xl bg-emerald-200 rounded">
-            <p class="text-gray-700">{{ $success }}</p>
-        </div>
-    @endif
     <div class="my-7">
         <form wire:submit.prevent="submit">
             <div class="mb-6">
@@ -30,4 +25,9 @@
             </p>
         </form>
     </div>
+    @if ($success)
+        <div class="p-3 text-xl bg-emerald-200 rounded">
+            <p class="text-gray-700">{{ $success }}</p>
+        </div>
+    @endif
 </div>

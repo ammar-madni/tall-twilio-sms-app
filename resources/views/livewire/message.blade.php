@@ -1,6 +1,6 @@
 <div class="space-y-6">
     @if ($messages->count())
-        @foreach ($messages->reverse() as $message)
+        @foreach ($messages as $message)
             <div class="bg-white max-w-xl mx-auto overflow-hidden shadow-sm sm:rounded-lg" wire:key="{{ $message->id }}" wire:poll.1000ms>
                 <div class="px-6 bg-white border-b border-gray-200">
                     <div class="divide-y">
@@ -33,6 +33,7 @@
                 </div>
             </div>
         @endforeach
+        {{ $messages->links('custom-pagination') }}
     @else
         <div class="w-full text-center">
             <p class="text-gray-600">

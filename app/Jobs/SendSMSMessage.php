@@ -17,7 +17,6 @@ class SendSMSMessage implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $tries = 5;
     protected $message;
 
     /**
@@ -28,6 +27,16 @@ class SendSMSMessage implements ShouldQueue
     public function __construct(Message $message)
     {
         $this->message = $message;
+    }
+
+    /**
+     * Determine the time at which the job should timeout.
+     *
+     * @return \DateTime
+     */
+    public function retryUntil()
+    {
+        return now()->addMinutes(10);
     }
 
     /**
