@@ -82,7 +82,14 @@ class SendSMSMessage implements ShouldQueue
 
     public function failed(Exception $exception)
     {
-        // TODO: handle exception
-        info($exception->getMessage());
+        info('Max exceptions exceeded.' . $exception->getMessage());
+
+        $status = 'failed';
+
+        $message = $this->message;
+
+        $message->status = $status;
+        
+        $message->save();
     }
 }
