@@ -18,6 +18,12 @@ class SendSMSMessage implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $message;
+    /**
+     * The maximum number of unhandled exceptions to allow before failing.
+     *
+     * @var int
+     */
+    public $maxExceptions = 3;
 
     /**
      * Create a new job instance.
@@ -77,5 +83,6 @@ class SendSMSMessage implements ShouldQueue
     public function failed(Exception $exception)
     {
         // TODO: handle exception
+        info($exception->getMessage());
     }
 }
