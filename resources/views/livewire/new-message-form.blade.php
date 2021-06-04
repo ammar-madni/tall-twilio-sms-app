@@ -25,9 +25,13 @@
             </p>
         </form>
     </div>
-    @if ($success)
-        <div class="p-3 text-xl bg-emerald-200 rounded">
-            <p class="text-gray-700">{{ $success }}</p>
+    @if (session()->has('success'))
+        <div class="px-4 py-2 text-xl bg-emerald-200 rounded-md">
+            <p class="text-gray-700">{{ session('success') }}</p>
+        </div>
+    @elseif (session()->has('error'))
+        <div class="px-4 py-2 text-xl bg-red-200 rounded-md">
+            <p class="text-gray-700">{{ session('error') }}</p>
         </div>
     @endif
 </div>
