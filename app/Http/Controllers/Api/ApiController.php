@@ -10,10 +10,14 @@ class ApiController extends Controller
 {
     public function smsStatusCallback(Request $request, $id)
     {
-        $status = $request->status;
-
-        $message = Message::whereId($id)->first();
-        $message->status = $status;
-        $message->save();
+        if ($request->account_sid == getenv("TWILIO_ACCOUNT_SID")) {
+            $status = $request->status;
+    
+            $message = Message::whereId($id)->first();
+            $message->status = $status;
+            $message->save();
+        } else {
+            info('A request was made to: ' . url($request->path()) . ' - However, the request credentials did not match.');
+        }
     }
 }
