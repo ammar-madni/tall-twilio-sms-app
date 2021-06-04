@@ -12,7 +12,9 @@
                     @foreach ($messages as $message)
                         <livewire:message :message="$message" :wire:key="$message->id"/>
                     @endforeach
-                    {{ $messages->links() }}
+                    <div class="py-10">
+                        {{ $messages->links() }}
+                    </div>
                 @else
                     <div class="w-full text-center">
                         <p class="text-gray-600">

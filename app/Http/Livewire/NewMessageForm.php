@@ -2,8 +2,9 @@
 
 namespace App\Http\Livewire;
 
-use App\Jobs\SendSMSMessage;
 use Livewire\Component;
+use App\Jobs\SendSMSMessage;
+use App\Rules\ValidPhoneNumber;
 use DanHarrin\LivewireRateLimiting\WithRateLimiting;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 
@@ -13,20 +14,19 @@ class NewMessageForm extends Component
 
     public $phone;
     public $body;
-    protected $rules = [
-        // uk numbers only, switch to lookup api later.
-        'phone' => ['required', 'regex:/^(\+44)(?:\d\s?){9,10}$/'], 
-        'body' => 'required|max:140'
-    ];
+    public $success;
 
     public function render()
     {
         return view('livewire.new-message-form');
     }
 
-    public function updated($field)
+    public function rules()
     {
-        $this->validateOnly($field);
+        return [
+            'phone' => ['required', new ValidPhoneNumber], 
+            'body' => 'required|max:140'
+        ];
     }
 
     public function submit()
