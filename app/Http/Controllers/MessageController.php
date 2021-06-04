@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
+
 class MessageController extends Controller
 {
     /**
@@ -16,7 +18,11 @@ class MessageController extends Controller
 
     public function index()
     {
-        return view('messages.index');
+        $messages = Message::get();
+
+        return view('messages.index', [
+            'messages' => $messages->reverse()->paginate(6)
+        ]);
     }
 
     public function create()

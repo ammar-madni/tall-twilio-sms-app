@@ -3,19 +3,19 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\Message as MessageData;
-use Livewire\WithPagination;
 
 class Message extends Component
 {
-    use WithPagination;
+    public $message;
+    public $statusFinalPossiblities = ['sent', 'delivered', 'failed', 'undelivered'];
+    public $statusIsFinal = false;
 
     public function render()
     {
-        $messages = MessageData::get();
+        if (in_array($this->message->status, $this->statusFinalPossiblities)) {
+            $this->statusIsFinal = true;
+        }
 
-        return view('livewire.message', [
-            'messages' => $messages->reverse()->paginate(6)
-        ]);
+        return view('livewire.message');
     }
 }
