@@ -64,15 +64,10 @@ class SendSMSMessage implements ShouldQueue
                 [
                     'from' => $message->user->twilio_phone, 
                     'body' => $message->body,
-                    /*
-                    Twilio throws an exception if the route provided is not a valid url
-                    so I have tested my api endpoint locally using Postman with the same
-                    payload provided here:
-                    https://www.twilio.com/docs/usage/webhooks/sms-webhooks
-                    */
-
-                    // TODO: figure out why exception is not thrown when message is sent via job but is thrown when sent directly from components submit function?
                     'statusCallback' => route('sms-status-callback', ['id' => $message->id]),
+
+                    // When testing with ngrok this provides Twilio's webhook the ngrok url with the dynamic path to the correct endpoint.
+                    // 'statusCallback' => 'https://your.ngrok.io' . route('sms-status-callback', ['id' => $message->id], false),
                 ]
             );
         }, function () {
